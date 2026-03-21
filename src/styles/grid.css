@@ -1,0 +1,38 @@
+.grid {
+    display: inline-block;
+  }
+  
+  .row {
+    display: flex;
+  }
+  
+  .cell {
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #aaa;
+    cursor: pointer;
+  }
+
+  .cell.n1 { color: blue; }
+  .cell.n1 { color: blue; }
+  .cell.n2 { color: green; }
+  .cell.n3 { color: red; }
+  .cell.n4 { color: purple; }
+  .cell.n5 { color: brown; }
+  .cell.n6 { color: turquoise; }
+  .cell.n7 { color: black; }
+  .cell.n8 { color: gray; }
+  
+  .cell.revealed {
+    background-color: #ddd;
+  }
+  
+  .cell.selected {
+    border: 2px solid blue;
+  }
+
+ 
