@@ -53,7 +53,7 @@ export function useKeyboardControls(grid, onReveal, onFlag, resetGame, goToMenu)
 
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, [grid, onReveal, onFlag]);
+  }, [grid, onReveal, onFlag, goToMenu, resetGame]);
 
   return cursor;
 }
