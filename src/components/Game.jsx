@@ -13,7 +13,13 @@ export default function Game({ rows, cols, mines, onBack }) {
     resetGame
   } = useGameLogic(rows, cols, mines);
 
-  const cursor = useKeyboardControls(grid, handleReveal, handleFlag);
+  const cursor = useKeyboardControls(
+    grid, 
+    handleReveal, 
+    handleFlag,
+    resetGame,
+    onBack
+  );
 
   return (
     <div className="app-container">
@@ -21,7 +27,12 @@ export default function Game({ rows, cols, mines, onBack }) {
 
       {/* Now the Back to Menu button actually works */}
       <button onClick={onBack}>Back to Menu</button>
-      <button onClick={resetGame}>Restart</button>
+      <button
+        onClick={(e) => {
+          resetGame();
+          e.target.blur(); // ✅ removes focus from button
+        }}>
+        Restart</button>
 
       <p>Status: {gameStatus}</p>
 

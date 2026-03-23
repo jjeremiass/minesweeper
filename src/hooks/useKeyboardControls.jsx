@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function useKeyboardControls(grid, onReveal, onFlag) {
+export function useKeyboardControls(grid, onReveal, onFlag, resetGame, goToMenu) {
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -35,6 +35,14 @@ export function useKeyboardControls(grid, onReveal, onFlag) {
           case "F":
             onFlag(x, y);
             return prev;
+          case "r":
+          case "R":
+            resetGame?.();
+            break;
+          case "m":
+          case "M":
+            goToMenu?.();
+            break;
           default:
             return prev;
         }
