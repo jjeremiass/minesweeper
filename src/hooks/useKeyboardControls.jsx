@@ -5,6 +5,7 @@ export function useKeyboardControls(grid, onReveal, onFlag) {
 
   useEffect(() => {
     function handleKey(e) {
+      if (e.repeat) return;
       if (!grid.length) return;
 
       const rows = grid.length;
