@@ -3,6 +3,8 @@ import { generateGrid } from "../utils/generateGrid";
 import { placeMines } from "../utils/placeMines";
 import { calculateNeighbors } from "../utils/calculateNeighbors";
 import { revealCells } from "../utils/revealCells";
+import explosionSound from "../assets/Sounds/explosion.mp3"
+import winSound from "../assets/Sounds/fanfare.mp3"
 
 export function useGameLogic(rows = 10, cols = 10, mineCount = 10) {
 
@@ -10,7 +12,8 @@ export function useGameLogic(rows = 10, cols = 10, mineCount = 10) {
   const [explodedCell, setExplodedCell] = useState(null);
   const [grid, setGrid] = useState(() => generateGrid(rows, cols));
   const [firstClick, setFirstClick] = useState(true);
-  
+  const explosionAudio = new Audio(explosionSound);
+  const winAudio = new Audio(winSound);
 
   function handleReveal(x, y) {
     if (gameStatus !== "playing") return;
@@ -28,6 +31,9 @@ export function useGameLogic(rows = 10, cols = 10, mineCount = 10) {
   
     if (newGrid[y][x].isMine) {
       setExplodedCell({ x, y });
+
+      explosionAudio.play();
+
       newGrid = newGrid.map(row =>
         row.map(c => ({ ...c, isRevealed: true }))
       );
@@ -39,7 +45,10 @@ export function useGameLogic(rows = 10, cols = 10, mineCount = 10) {
     newGrid = revealCells(newGrid, x, y);
     setGrid(newGrid);
   
-    if (checkWin(newGrid)) setGameStatus("won");
+    if (checkWin(newGrid)) {
+      winAudio.play();
+      setGameStatus("won");
+    }
   }
   
 
