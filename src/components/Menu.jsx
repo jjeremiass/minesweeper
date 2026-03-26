@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 
-function Menu({ onStart }) {
-  const difficulties = [
+const difficulties = [
     { label: "Easy", rows: 8, cols: 8, mines: 10 },
     { label: "Medium", rows: 10, cols: 10, mines: 15 },
     { label: "Hard", rows: 12, cols: 12, mines: 25 },
   ];
 
+function Menu({ onStart }) {
+  
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   useEffect(() => {
