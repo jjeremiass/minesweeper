@@ -19,14 +19,14 @@ function App() {
 
   function goToMenu() {
     setGameStarted(false);
-    setGameId(prev => prev + 1); // force remount of Game
+    setGameId(prev => prev + 1);
   }
 
   if (!gameStarted) {
     return <Menu onStart={startGame} />;
   }
 
-  // Pass goToMenu as a prop
+ 
   return (
     <Game
       key={gameId}
