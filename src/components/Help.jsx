@@ -7,16 +7,16 @@ export default function Help({ visible }) {
     <div
       className="help-panel"
       style={{
+        margin: "20px auto",
         width: "400px",
         border: "2px solid #007bff",
         padding: "10px",
-        margin: "10px",
         backgroundColor: "#e6f0ff",
         borderRadius: "8px",
-        alignItems: "center"
+        textAlign: "left",
       }}
     >
-      <h3>Controls</h3>
+      <h3 style={{textAlign:"center"}}>Controls</h3>
       <ul>
         <li>Reveal cell: Left Click / Enter / Space</li>
         <li>Flag cell: Right Click / F</li>
